@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeConroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(HomeConroller::class)->group(function() {
+    Route::get('About-Us','aboutUsPage')->name('Home.AboutUs');
+    Route::get('Contact-Us','contactUsPage')->name('Home.ContactUs');
+    Route::post('store/contact-message','storeContactMessages');
 });
